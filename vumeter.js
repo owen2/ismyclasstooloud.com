@@ -1,20 +1,33 @@
 function go() {
 	
-	$("#complainer").slideUp();
+	$("section").slideUp();
 	
-	if (!navigator.getUserMedia)
+	if (!hasGetUserMedia())
 	{
 		complain();
 	}
 	else 
 	{
-		var mysteryObject = getUserMedia();
+		beUnsure();
 	}
 	
 	
 }
 
 function complain(){
-	
+	$("#complainer").slideDown();
 }
+
+function beUnsure()
+{
+	$("#unsure").slideDown();
+}
+
+function hasGetUserMedia() {
+  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+}
+
+$(document).ready(function(){
 go();
+});
