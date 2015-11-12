@@ -7,3 +7,28 @@ body{
 section{
 	font-size: 256pt;
 }
+
+#loudest{
+	color: darkred;
+}
+
+#louderer{
+	color: darkorange;
+}
+
+#louder{
+	color: darkgoldenrod;
+}
+
+#loud{
+	color: darkgreen;
+}
+
+#notloud
+{
+	color: green
+}
+
+canvas{
+	margin: 0;
+}
