@@ -1,5 +1,5 @@
 angular.module('vumeter',[])
-.controller('mainController',["$scope",function($scope){
+.controller('mainController',function($scope,$interval){
 	this.status= "Please give me access to your mic.";
 	this.loudnessLevel="an unknown loudness";
 	this.history = [];
@@ -18,19 +18,17 @@ angular.module('vumeter',[])
 			this.audioContext = new AudioContext();
 			this.analyser = this.audioContext.createAnalyser();
 			this.audioContext.createMediaStreamSource(stream).connect(this.analyser); 
-			setInterval(function (){
+			$interval(function (){
 				this.analyser.getFloatTimeDomainData(this.rawData);
 				var peak = Math.max.apply(Math,this.rawData);
-				$scope.$apply(function(){
-					$scope.peakDebug = peak;
-					if (peak > .5){
-						$scope.loudnessLevel= "loud!";
-					}
-					else{
-						$scope.loudnessLevel = "not so loud.";
-					}
-				});
-			}, 1000);
-		});
+				$scope.peakDebug = peak;
+				if (peak > .5){
+					$scope.loudnessLevel= "loud!";
+				}
+				else{
+					$scope.loudnessLevel = "not so loud.";
+				}
+			});
+		}, 1000);
 	}
-}]);
+});
