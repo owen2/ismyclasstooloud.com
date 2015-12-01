@@ -1,15 +1,19 @@
 <!doctype html>
 <html ng-app="vumeter">
+
 <head>
 	<title>Is My Classroom Too Loud?</title>
-	<link rel="stylesheet" href="theme.css"/>
+	<link rel="stylesheet" href="theme.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<script src="vumeter2.js"></script>
 </head>
+
 <body>
 	<div ng-controller="mainController as main">
 		<h1>{{main.deviceStatus}}</h1>
-		<h1>Your classroom is {{main.loudnessLevel}} ({{main.peakDebug}})</h1>
+		<h1>You are {{main.loudnessLevel}}</h1>
+		<h1>({{main.peakDebug}})</h1>
 	</div>
 </body>
+
 </html>
